@@ -127,7 +127,7 @@ function cursor_effect() {
   });
 }
 function cursor_effect_pg4() {
-  var pg4 = document.querySelector(".pg4");
+  var pg4 = document.querySelector(".pg4-anime");
   var cursor = document.querySelector(".pg4-cursor");
 
   pg4.addEventListener("mousemove", function (dets) {
