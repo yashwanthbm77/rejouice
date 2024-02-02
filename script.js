@@ -19,7 +19,7 @@ function locomotive() {
     }, // we don't have to define a scrollLeft because we're only scrolling vertically.
     getBoundingClientRect() {
       return {
-        top: 0,
+        top: 10,
         left: 0,
         width: window.innerWidth,
         height: window.innerHeight,
@@ -30,6 +30,61 @@ function locomotive() {
       ? "transform"
       : "fixed",
   });
+
+  // --- RED PANEL ---
+  gsap.from(".line-1", {
+    scrollTrigger: {
+      trigger: ".line-1",
+      scroller: ".main",
+      scrub: true,
+      start: "top bottom",
+      end: "top top",
+      onUpdate: (self) => console.log(self.direction),
+    },
+    scaleX: 0,
+    transformOrigin: "left center",
+    ease: "none",
+  });
+
+  // --- ORANGE PANEL ---
+  gsap.from(".line-2", {
+    scrollTrigger: {
+      trigger: ".orange",
+      scroller: ".main",
+      scrub: true,
+      pin: true,
+      start: "top top",
+      end: "+=100%",
+    },
+    scaleX: 0,
+    transformOrigin: "left center",
+    ease: "none",
+  });
+
+  // --- PURPLE/GREEN PANEL ---
+  var tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".purple",
+      scroller: ".main",
+      scrub: true,
+      pin: true,
+      start: "top top",
+      end: "+=100%",
+    },
+  });
+
+  tl.from(".purple p", {
+    scale: 0.3,
+    rotation: 45,
+    autoAlpha: 0,
+    ease: "power2",
+  })
+    .from(
+      ".line-3",
+      { scaleX: 0, transformOrigin: "left center", ease: "none" },
+      0
+    )
+    .to(".purple", { backgroundColor: "#28a92b" }, 0);
 
   // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll.
   ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
@@ -72,32 +127,23 @@ function cursor_effect() {
   });
 }
 function cursor_effect_pg4() {
-  var pg1Content = document.querySelector(".pg4-anime");
+  var pg4 = document.querySelector(".pg4");
   var cursor = document.querySelector(".pg4-cursor");
 
-  pg1Content.addEventListener("mousemove", function (dets) {
-    // cursor.style.left = dets.x + "px";   //its pure JS effect
-    // cursor.style.top = dets.y + "px";      //its pure JS effect
+  pg4.addEventListener("mousemove", function (dets) {
     gsap.to(cursor, {
       x: dets.x,
       y: dets.y,
     });
   });
 
-  /* pg1Content.addEventListener("mouseenter", function () {
-    cursor.style.scale = "1";
-  });
-  pg1Content.addEventListener("mouseleave", function () {
-    cursor.style.scale = "0";
-  }); */ //its pure js code
-
-  pg1Content.addEventListener("mouseenter", function () {
+  pg4.addEventListener("mouseenter", function () {
     gsap.to(cursor, {
       scale: 1,
       opacity: 1,
     });
   });
-  pg1Content.addEventListener("mouseleave", function () {
+  pg4.addEventListener("mouseleave", function () {
     gsap.to(cursor, {
       scale: 0,
       opacity: 0,
@@ -205,7 +251,7 @@ function pg5_h3() {
 function swiper() {
   var swiper = new Swiper(".mySwiper", {
     slidesPerView: 4.2,
-    spaceBetween: 30,
+    spaceBetween: 10,
     loop: true,
     mousewheel: true,
     keyboard: true,
