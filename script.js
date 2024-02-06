@@ -195,7 +195,7 @@ function pg2_h1() {
       scroller: ".main",
       start: "top 47%",
       end: "top 46%",
-      markers: true,
+      // markers: true,
       scrub: 2,
     },
   });
@@ -211,7 +211,7 @@ function pg2_h4() {
       scroller: ".main",
       start: "top 47%",
       end: "top 46%",
-      markers: true,
+      // markers: true,
       scrub: 2,
     },
   });
@@ -227,7 +227,7 @@ function pg5_h5() {
       scroller: ".main",
       start: "top 47%",
       end: "top 45%",
-      markers: true,
+      // markers: true,
       scrub: 2,
     },
   });
@@ -242,7 +242,7 @@ function pg5_h3() {
       scroller: ".main",
       start: "top 47%",
       end: "top 45%",
-      markers: true,
+      // markers: true,
       scrub: 2,
     },
   });
@@ -268,7 +268,7 @@ function footer() {
       scroller: ".main",
       start: "left 47px",
       end: "left 54px",
-      markers: true,
+      // markers: true,
       scrub: 2,
     },
   });
